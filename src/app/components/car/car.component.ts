@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
+import { HttpClient } from '@angular/common/http';
+import { CarResponseModel } from 'src/app/models/carResponseModel';
 
 @Component({
   selector: 'app-car',
@@ -7,11 +9,19 @@ import { Car } from 'src/app/models/car';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
+  cars: Car[] = []
+  apiUrl = 'https://localhost:44333/api/cars/getallcars'
+  constructor(private httpClient: HttpClient) {}
 
+  ngOnInit(): void {
+    this.getCars();
+  }
 
-  cars:Car[] = [];
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  getCars() {
+    this.httpClient
+    .get<CarResponseModel>(this.apiUrl)
+    .subscribe((response) => {
+      this.cars = response.data;
+    });
+  }
 }
