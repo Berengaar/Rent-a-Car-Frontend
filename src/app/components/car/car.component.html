@@ -1,4 +1,20 @@
-<table class="table">
+<div *ngIf ="dataLoaded==false" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading Data...</span>
+  </div> <!--SPINNER-->        
+   
+<table *ngIf ="dataLoaded==true" class="table">
+    <thead>     <!--Grup başlığı-->
+        <tr>
+            <th>Id</th>
+            <th>Kategori</th>
+            <th>Model</th>
+            <th>Günlük ücret</th>
+            <th>Açıklama</th>
+            <th>Renk</th>
+            <th>Marka</th>
+            <th>Model Numarası</th>
+        </tr>
+    </thead>
     <tr *ngFor="let car of cars">
         <td>{{car.carId}}</td>
         <td>{{car.categoryId}}</td>

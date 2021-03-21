@@ -1,0 +1,9 @@
+
+<ul class="list-group">
+    <li (click)="setCurrentColor(color)" 
+    routerLink="/cars/colors/{{color.colorId}}"
+    *ngFor="let color of colors" 
+    [class]="getCurrentColorClass(color)">{{color.colorName}}</li>
+</ul>
+
+<h5 *ngIf="currentColor">{{currentColor.colorName}} seçtiniz</h5>
