@@ -1,0 +1,34 @@
+<h1 style="color:red"><u>Car Detail</u></h1>
+
+
+<table class="table">
+    <thead>     <!--Grup başlığı-->
+        <tr>
+            <th>Kategori</th>
+            <th>Model</th>
+            <th>Günlük fiyat</th>
+            <th>KDV'li fiyat</th>
+            <th>Araba Adı</th>
+            <th>Renk</th>
+            <th>Marka</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="width: 1px; padding:50px; margin:5px;">
+            <td>{{carDetails.categoryName}}</td>
+            <td>{{carDetails.modelYear}}</td>
+            <td>{{carDetails.dailyPrice |currency}}</td>        
+            <td>{{carDetails.dailyPrice | vatAdded:18 |currency}}</td>
+            <td>{{carDetails.carName}}</td>     <!--Currency : Para birimi olarak göstermeye yarıyor-->
+            <td>{{carDetails.colorName}}</td>
+            <td>{{carDetails.brandName}}</td>     
+        </tr>
+        <br>
+        <div>
+            <img  src="https://localhost:44333/{{ carDetails.imagePath ? carDetails.imagePath : '/images/null.jpg' }}" 
+            class="card-img-top" >
+           </div>
+    </tbody>
+    
+</table>

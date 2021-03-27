@@ -35,4 +35,13 @@ export class ColorComponent implements OnInit {
     }
   }
 
+  getAllColorClass(){    //seçilen kategoriyi söyler
+    if(!this.currentColor){
+      return "list-group-item active"
+    }
+    else{
+      return "list-group-item"
+    }
+  }
+
 }

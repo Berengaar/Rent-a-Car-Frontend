@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car';
+import { CarDetail } from '../models/carDetail';
 import { ListResponseModel } from '../models/listResponseModel';
 
 
@@ -14,9 +15,9 @@ export class CarService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCars():Observable<ListResponseModel<Car>> {
+  getCars():Observable<ListResponseModel<CarDetail>> {
     let newPath=this.apiUrl+"cars/getallcars"   //let => fonksiyon içinde değişken tanımlama
-    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+    return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
   }
 
   getCarsByBrand(brandId:number):Observable<ListResponseModel<Car>> {
