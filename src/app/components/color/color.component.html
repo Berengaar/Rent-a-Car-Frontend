@@ -1,9 +1,16 @@
+<div class="mb-3">
+  <label for="filterColor" class="form-label">Renk Ara:</label>
+  <input type="text" [(ngModel)]="filterColor" class="form-control" id="filterColor" placeholder="Renk...">
+</div>
+<div *ngIf="filterColor.length>2" class="alert alert-primary">
+  {{filterColor}} aradınız
+</div>
 <ul class="list-group">
   <li [class]="getAllColorClass()" routerLink="/cars">Tüm renkler</li>
   <li
     (click)="setCurrentColor(color)"
     routerLink="/cars/colors/{{color.colorId}}"
-    *ngFor="let color of colors"
+    *ngFor="let color of colors | filterColor:filterColor"
     [class]="getCurrentColorClass(color)"
   >
   {{color.colorName}}

@@ -18,6 +18,7 @@ export class CarComponent implements OnInit {
   carDetails:CarDetail[];
   dataLoaded = false;
   filterText="";
+  filterBrand="";
   constructor(
     private carService: CarService,
     private cartService:CartService,
