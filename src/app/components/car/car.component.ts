@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
+import { BrandService } from 'src/app/Services/brand.service';
 import { CarDetailService } from 'src/app/Services/car-detail.service';
 import { CarService } from 'src/app/Services/car.service';
 import { CartService } from 'src/app/Services/cart.service';
@@ -14,6 +16,7 @@ import { CartService } from 'src/app/Services/cart.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  brands:Brand[]=[];
   carImageBasePath = "https://localhost:44333/";
   carDetails:CarDetail[];
   dataLoaded = false;
@@ -22,6 +25,7 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private cartService:CartService,
+    private brandServive:BrandService,
     private carDetailService:CarDetailService,
     private activatedRoute: ActivatedRoute,
     private toastrService:ToastrService
@@ -49,6 +53,11 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
+ getBrands(){
+   this.brandServive.getBrands().subscribe((response)=>{
+     this.brands=response.data;
+   })
+ }
 
   getCarsByBrand(brandId: number) {
     this.carService.getCarsByBrand(brandId).subscribe((response) => {

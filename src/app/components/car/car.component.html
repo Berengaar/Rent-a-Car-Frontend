@@ -11,7 +11,10 @@
   <div *ngIf="filterText.length>2" class="alert alert-warning">
       {{filterText}} aradınız
   </div>
-   
+  <label for="cars" style="color: black;">Tüm Markalar:</label>
+  <select name="brands" id="brands">
+    <option [class]="getBrands()" *ngFor="let brand of brands" value="{{brand.brandId}}">{{brand.brandName}}</option>  
+  </select>
 <table *ngIf ="dataLoaded==true" class="table" >
     <thead>     <!--Grup başlığı-->
         <tr>

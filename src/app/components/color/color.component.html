@@ -5,6 +5,11 @@
 <div *ngIf="filterColor.length>2" class="alert alert-primary">
   {{filterColor}} aradınız
 </div>
+<select class="form-select" aria-label="Default select example" >
+  <option selected>Renkler Listesi</option>
+  <option *ngFor="let color of colors" value="{{color.colorId}}">{{color.colorName}}</option>
+</select>
+<br>
 <ul class="list-group">
   <li [class]="getAllColorClass()" routerLink="/cars">Tüm renkler</li>
   <li
